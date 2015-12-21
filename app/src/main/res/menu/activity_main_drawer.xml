@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Servicios en línea">
+        <group android:checkableBehavior="single">
+            <item android:id="@+id/servicios_ofrecidos" android:icon="@android:drawable/ic_menu_zoom"
+                android:title="Servicios ofrecidos" />
+            <item android:id="@+id/servicios_solicitados" android:icon="@android:drawable/ic_menu_zoom"
+                android:title="Servicios solicitados" />
+        </group>
+    </item>
+
+    <item android:title="Publicar">
+        <menu>
+            <item android:id="@+id/ofrecer_servicio" android:icon="@android:drawable/ic_menu_send"
+                android:title="Ofrecer un servicio"/>
+            <item android:id="@+id/solicitar_servicio" android:icon="@android:drawable/ic_menu_send"
+                android:title="Solicitar un servicio"/>
+        </menu>
+    </item>
+
+</menu>

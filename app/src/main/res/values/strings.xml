@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">iServiFast</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment qwehiqw hie qwhji qewhhiqew hij qwehihqewi hqewi h qewih qewiheqwi hqw ieh qewih eiqwhi qewhi qewhiqew hiqwe hi eqwhiqewh i</string>
+    <string name="title_activity_main">iServiFast</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="servidor">http://10.0.2.2:8080/tbd_java_ee-master/</string>
+
+
+</resources>

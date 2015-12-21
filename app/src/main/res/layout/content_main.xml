@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main"
+    tools:context="com.usach.tbdgrupo7.iservifast.Views.MainActivity">
+
+    <FrameLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="android.support.v4.app.Fragment"
+        android:id="@+id/fragment_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ofrecer"
+            android:id="@+id/btn_ofrecer"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitar"
+            android:id="@+id/button2"
+            android:layout_alignTop="@+id/btn_ofrecer"
+            android:layout_toRightOf="@+id/btn_ofrecer"
+            android:layout_toEndOf="@+id/btn_ofrecer" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView4"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="46dp" />
+    </FrameLayout>
+</RelativeLayout>
