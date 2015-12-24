@@ -24,6 +24,7 @@ public class Login {
                 usuarios[i]=row.getString("usuario");
                 passwords[i]=row.getString("password");
             }
+
             return matchUsuarioPassword(usuarios,passwords,usuario,password);
         } catch (JSONException e) {
             Log.e("ERROR", this.getClass().toString() + " " + e.toString());

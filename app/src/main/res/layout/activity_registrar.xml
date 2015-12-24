@@ -19,20 +19,72 @@ android:fitsSystemWindows="true">
         android:layout_marginBottom="24dp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Name Label -->
+    <!-- Usuario -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp">
-        <EditText android:id="@+id/input_name"
+        <EditText android:id="@+id/input_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Nombre de usuario" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Nombre -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:hint="Name" />
+            android:hint="Nombre" />
     </android.support.design.widget.TextInputLayout>
 
-    <!--  Email Label -->
+    <!-- Apellido -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="Apellidos" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--  Contraseña -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Contraseña" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Repetir Contraseña  -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_password2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Repetir contraseña"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Email -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,18 +97,67 @@ android:fitsSystemWindows="true">
             android:hint="Email" />
     </android.support.design.widget.TextInputLayout>
 
-    <!-- Password Label -->
+    <!-- Region -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp">
-        <EditText android:id="@+id/input_password"
+        <EditText android:id="@+id/input_region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Password"/>
+            android:inputType="text"
+            android:hint="Región"/>
     </android.support.design.widget.TextInputLayout>
+
+    <!-- Ciudad -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_ciudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Ciudad"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Comuna -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Comuna"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Direccion -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Dirección"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView android:id="@+id/terminos_condiciones"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:text="@string/terminos_y_condiciones"
+        android:gravity="center"
+        android:textSize="16dip"
+        android:textStyle="bold"
+        android:textIsSelectable="false" />
 
     <!-- Signup Button -->
     <android.support.v7.widget.AppCompatButton

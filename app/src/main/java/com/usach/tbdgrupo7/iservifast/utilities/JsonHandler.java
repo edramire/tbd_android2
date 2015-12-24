@@ -2,6 +2,8 @@ package com.usach.tbdgrupo7.iservifast.utilities;
 
 import android.util.Log;
 
+import com.usach.tbdgrupo7.iservifast.Model.Usuario;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,5 +33,28 @@ public class JsonHandler {
         }
         return null;
     }// getActors(String actors)
+
+    public JSONObject setUsuario(Usuario usuario) {
+        // build jsonObject
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.accumulate("usuario", usuario.getUsuario());
+            jsonObject.accumulate("nombre", usuario.getNombre());
+            jsonObject.accumulate("apellido", usuario.getApellido());
+            jsonObject.accumulate("password", usuario.getPassword());
+            jsonObject.accumulate("mail", usuario.getEmail());
+            jsonObject.accumulate("region", usuario.getRegion());
+            jsonObject.accumulate("ciudad", usuario.getCiudad());
+            jsonObject.accumulate("comuna", usuario.getComuna());
+            jsonObject.accumulate("direccion", usuario.getDireccion());
+            return jsonObject;
+
+        }catch(JSONException je){
+            Log.e("ERROR",this.getClass().toString()+ " - "+ je.getMessage());
+        }
+        return null;
+    }
+
+
 
 }// JsonHandler

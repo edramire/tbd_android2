@@ -12,19 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.usach.tbdgrupo7.iservifast.R;
-
-import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FragmentTransaction transaction;
     private BroadcastReceiver br = null;
-    public Stack<String> mFragmentStack;
+    private Button btn_ofrecer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +31,21 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        btn_ofrecer = (Button) findViewById(R.id.btn_ofrecer);
+
+        btn_ofrecer.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        OfrecerActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,13 +57,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Solo para probar
-
+        /*
         Bundle b = getIntent().getExtras();
         String usuario = b.getString("usuario");
         TextView textView = (TextView) findViewById(R.id.textView4);
         textView.setText(usuario);
-
-
+        */
     }
 
     @Override
@@ -90,29 +103,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
         if (id == R.id.servicios_ofrecidos) {
             Toast.makeText(getApplicationContext(),"Servicios ofrecidos mensaje",Toast.LENGTH_LONG).show();
         } else if (id == R.id.servicios_solicitados) {
 
-            /*
-            setContentView(R.layout.fragment_solicitar);
-            transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_solicitar, new SolicitarFragment());
-            transaction.commit();
-*/
-            Intent intent = new Intent(getApplicationContext(), OfrecerActivity.class);
-            startActivityForResult(intent, 0);
 
 
-            Toast.makeText(getApplicationContext(),"mensaje",Toast.LENGTH_LONG).show();
-/*
-            f1 = new SolicitarFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.ofrecer_servicio, f1);
-            ft.replace(R.id.ofrecer_servicio,)
-            ft.commit();
-*/
         } else if (id == R.id.ofrecer_servicio) {
 
             Intent intent = new Intent(getApplicationContext(), OfrecerActivity.class);
@@ -120,19 +116,18 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.solicitar_servicio){
 
-            /*
-            Fragment fragment = new SolicitarFragment();
+
+/*            Fragment fragment = new SolicitarFragment();
             String tag = fragment.toString();
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             //FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager
             fragmentManager.beginTransaction()
-                    .hide(getFragmentManager().findFragmentById(R.id.fragment_main))
-                    .add(fragment,fragment.toString())
+                    .add(fragment, fragment.toString())
                     .addToBackStack(tag)
                     .commit();
-            */
 
+                    */
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

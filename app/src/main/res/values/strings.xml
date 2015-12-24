@@ -1,16 +1,14 @@
 <resources>
     <string name="app_name">iServiFast</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
     <string name="hello_blank_fragment">Hello blank fragment qwehiqw hie qwhji qewhhiqew hij qwehihqewi hqewi h qewih qewiheqwi hqw ieh qewih eiqwhi qewhi qewhiqew hiqwe hi eqwhiqewh i</string>
     <string name="title_activity_main">iServiFast</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="servidor">http://10.0.2.2:8080/tbd_java_ee-master/</string>
-
-
+    <string name="terminos_y_condiciones">Al crear cuenta acepto los <u>terminos y condiciones</u>.</string>
+    <string name="categoria">Categoria</string>
+    <string name="user_created">Usuario creado satisfactoriamente.</string>
+    <string name="error_database_connection">Error: no se pudo conectar a la base de datos.</string>
+    <string name="error_internet">Error: no hay internet.</string>
 </resources>
