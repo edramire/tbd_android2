@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.usach.tbdgrupo7.iservifast.R;
+import com.usach.tbdgrupo7.iservifast.utilities.SystemUtilities;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,22 +31,20 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        //setSupportActionBar(toolbar);
 
         btn_ofrecer = (Button) findViewById(R.id.btn_ofrecer);
-
         btn_ofrecer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
+                SystemUtilities su = new SystemUtilities(getApplicationContext());
+                if (su.isNetworkAvailable()) {
+                    Intent myIntent = new Intent(MainActivity.this,OfrecerActivity.class);
+                    startActivity(myIntent);
+                }
                 // Start NewActivity.class
-                Intent myIntent = new Intent(MainActivity.this,
-                        OfrecerActivity.class);
-                startActivity(myIntent);
             }
         });
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         //Solo para probar
         /*
         Bundle b = getIntent().getExtras();
-        String usuario = b.getString("usuario");
+        String usuario = b.getString("nombre");
         TextView textView = (TextView) findViewById(R.id.textView4);
         textView.setText(usuario);
         */

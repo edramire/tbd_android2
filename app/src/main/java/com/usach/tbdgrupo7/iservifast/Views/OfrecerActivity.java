@@ -36,6 +36,8 @@ public class OfrecerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ofrecer);
 
+        System.out.println("en ofreceractivity");
+
         btn_tomar_foto = (Button) findViewById(R.id.btn_tomar_foto);
         btn_seleccionar_foto = (Button) findViewById(R.id.btn_seleccionar_foto);
 

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.usach.tbdgrupo7.iservifast.Controllers.HttpGet;
 import com.usach.tbdgrupo7.iservifast.Controllers.HttpPost;
 import com.usach.tbdgrupo7.iservifast.Controllers.Registrar;
 import com.usach.tbdgrupo7.iservifast.Model.Usuario;
@@ -22,6 +22,9 @@ import com.usach.tbdgrupo7.iservifast.utilities.JsonHandler;
 import com.usach.tbdgrupo7.iservifast.utilities.SystemUtilities;
 
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -64,6 +67,7 @@ public class RegistrarActivity extends AppCompatActivity {
     String ciudad;
     String comuna;
     String direccion;
+    String qwe = "a";
 
     boolean usuarioDisponible;
     boolean emailDisponible;
@@ -79,7 +83,15 @@ public class RegistrarActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup();
+                try {
+                    signup();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (TimeoutException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -93,7 +105,7 @@ public class RegistrarActivity extends AppCompatActivity {
 
     }
 
-    public void signup() {
+    public void signup() throws InterruptedException, ExecutionException, TimeoutException {
 
         usuario = _usuarioText.getText().toString();
         nombre = _nombreText.getText().toString();
@@ -106,13 +118,12 @@ public class RegistrarActivity extends AppCompatActivity {
         comuna = _comunaText.getText().toString();
         direccion = _direccionText.getText().toString();
 
-        /*
         if (!validate()) {
             onSignupFailed();
             return;
         }
-        */
-        
+
+
         _signupButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(RegistrarActivity.this,
@@ -131,7 +142,7 @@ public class RegistrarActivity extends AppCompatActivity {
             us.setNombre(nombre);
             us.setApellido(apellido);
             us.setPassword(password);
-            us.setPassword2(password2);
+            //us.setPassword2(password2);
             us.setEmail(email);
             us.setRegion(region);
             us.setCiudad(ciudad);
@@ -155,8 +166,9 @@ public class RegistrarActivity extends AppCompatActivity {
                     }*/
                 }
             };
+
+            AsyncTask post = new HttpPost(this.getApplicationContext()).execute(getResources().getString(R.string.servidor) + "Usuario/crear", jObject.toString());
             this.registerReceiver(br, intentFilter);
-            new HttpPost(this.getApplicationContext()).execute(getResources().getString(R.string.servidor) + "Usuario/crear", jObject.toString());
         }else{
             Toast.makeText(this, getResources().getString(R.string.error_internet), Toast.LENGTH_LONG).show();
         }
@@ -188,8 +200,7 @@ public class RegistrarActivity extends AppCompatActivity {
         _signupButton.setEnabled(true);
     }
 
-    public boolean validate() {
-
+    public boolean validate() throws InterruptedException, ExecutionException, TimeoutException {
         boolean valid = true;
         IntentFilter intentFilter = new IntentFilter("httpData");
         br = new BroadcastReceiver() {
@@ -199,12 +210,20 @@ public class RegistrarActivity extends AppCompatActivity {
                 r.getUsuariosMails(intent.getStringExtra("data"),usuario,email);
                 usuarioDisponible = r.isUsuarioDisponible();
                 emailDisponible = r.isMailDisponible();
+                qwe = "qwe";
             }
         };
-        this.registerReceiver(br, intentFilter);
-        new HttpGet(getApplicationContext()).execute("http://10.0.2.2:8080/tbd_java_ee-master/Usuario");
 
-        if(!usuarioDisponible){
+
+
+        //AsyncTask ast = new HttpGet(getApplicationContext()).execute("http://10.0.2.2:8080/tbd_java_ee-master/Usuario");
+
+        this.registerReceiver(br, intentFilter);
+
+
+
+
+        if(usuarioDisponible==false){
             System.out.println("usuario en uso");
             _usuarioText.setError("Usuario ingresado en uso.");
             return false;
@@ -256,7 +275,6 @@ public class RegistrarActivity extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
-
         return valid;
     }
 }

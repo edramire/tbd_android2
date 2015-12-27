@@ -11,23 +11,28 @@ import org.json.JSONObject;
  */
 public class Registrar{
 
-    String[] usuarios;
-    String[] mails;
+    private String[] usuarios;
+    private String[] mails;
     boolean usuarioDisponible = false;
     boolean mailDisponible = false;
 
     public Registrar(){
     }
 
-    public void getUsuariosMails(String usuario1,String usuario,String mail) {
+    public void getUsuariosMails(String json,String usuario,String mail) {
+        System.out.println("ALGO");
+        System.out.println("algo mas");
         try {
-            JSONArray ja = new JSONArray(usuario1);
+            JSONArray ja = new JSONArray(json);
             usuarios = new String[ja.length()];
             mails = new String[ja.length()];
+            System.out.println("algo mass");
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject row = ja.getJSONObject(i);
                 usuarios[i]=row.getString("usuario");
                 mails[i]=row.getString("mail");
+                System.out.println(usuarios[i]);
+                System.out.println(mails[i]);
             }
             setUsuarioDisponible(usuarioDisponible(usuarios, usuario));
             setMailDisponible(mailDisponible(mails,mail));
