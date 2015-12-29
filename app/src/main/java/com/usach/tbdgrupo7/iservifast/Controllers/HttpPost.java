@@ -27,7 +27,6 @@ public class HttpPost extends AsyncTask<String, Void, String> {
      * @param params [0] URL, [1] parametros de envio (formato JSON)
      */
     public String sendData(String... params){
-        Log.e("LOG_important", params[0]+" - "+params[1]);
         try {
 
             URL url = new URL(params[0]);

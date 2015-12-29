@@ -5,18 +5,27 @@ package com.usach.tbdgrupo7.iservifast.Model;
  */
 public class Usuario {
 
-    String usuario;
-    String nombre;
-    String apellido;
-    String password;
-    String email;
-    String region;
-    String ciudad;
-    String comuna;
-    String direccion;
+    private int idUsuario;
+    private String usuario;
+    private String nombre;
+    private String apellido;
+    private String password;
+    private String email;
+    private String region;
+    private String ciudad;
+    private String comuna;
+    private String direccion;
 
     public Usuario(){
 
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getUsuario() {

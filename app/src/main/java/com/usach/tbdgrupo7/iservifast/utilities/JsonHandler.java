@@ -2,6 +2,7 @@ package com.usach.tbdgrupo7.iservifast.utilities;
 
 import android.util.Log;
 
+import com.usach.tbdgrupo7.iservifast.Model.Oferta;
 import com.usach.tbdgrupo7.iservifast.Model.Usuario;
 
 import org.json.JSONArray;
@@ -55,6 +56,23 @@ public class JsonHandler {
         return null;
     }
 
+    public JSONObject setOferta(Oferta oferta) {
+        // build jsonObject
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.accumulate("titulo", oferta.getTitulo());
+            jsonObject.accumulate("descripcion", oferta.getDescripcion());
+            jsonObject.accumulate("categoria_idCategoria", oferta.getCategoria_idCategoria());
+            jsonObject.accumulate("comunidad_idComunidad", oferta.getComunidad_idComunidad());
+            jsonObject.accumulate("duracion", oferta.getDuracion());
+            jsonObject.accumulate("precio", oferta.getPrecio());
+            jsonObject.accumulate("fecha", oferta.getFecha().toString());
+            return jsonObject;
 
+        }catch(JSONException je){
+            Log.e("ERROR",this.getClass().toString()+ " - "+ je.getMessage());
+        }
+        return null;
+    }
 
 }// JsonHandler

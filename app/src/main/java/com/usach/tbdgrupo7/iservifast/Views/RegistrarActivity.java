@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.usach.tbdgrupo7.iservifast.Controllers.HttpPost;
-import com.usach.tbdgrupo7.iservifast.Controllers.Registrar;
 import com.usach.tbdgrupo7.iservifast.Model.Usuario;
 import com.usach.tbdgrupo7.iservifast.R;
 import com.usach.tbdgrupo7.iservifast.utilities.JsonHandler;
@@ -67,7 +66,6 @@ public class RegistrarActivity extends AppCompatActivity {
     String ciudad;
     String comuna;
     String direccion;
-    String qwe = "a";
 
     boolean usuarioDisponible;
     boolean emailDisponible;
@@ -182,7 +180,7 @@ public class RegistrarActivity extends AppCompatActivity {
                         // onSignupFailed();
                         progressDialog.dismiss();
                     }
-                }, 2000);
+                }, 6000);
     }
 
 
@@ -202,7 +200,8 @@ public class RegistrarActivity extends AppCompatActivity {
 
     public boolean validate() throws InterruptedException, ExecutionException, TimeoutException {
         boolean valid = true;
-        IntentFilter intentFilter = new IntentFilter("httpData");
+
+        /*IntentFilter intentFilter = new IntentFilter("httpData");
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -210,19 +209,19 @@ public class RegistrarActivity extends AppCompatActivity {
                 r.getUsuariosMails(intent.getStringExtra("data"),usuario,email);
                 usuarioDisponible = r.isUsuarioDisponible();
                 emailDisponible = r.isMailDisponible();
-                qwe = "qwe";
             }
         };
+                this.registerReceiver(br, intentFilter);
 
+        */
 
 
         //AsyncTask ast = new HttpGet(getApplicationContext()).execute("http://10.0.2.2:8080/tbd_java_ee-master/Usuario");
 
-        this.registerReceiver(br, intentFilter);
 
 
 
-
+    /*
         if(usuarioDisponible==false){
             System.out.println("usuario en uso");
             _usuarioText.setError("Usuario ingresado en uso.");
@@ -240,7 +239,7 @@ public class RegistrarActivity extends AppCompatActivity {
         else{
             _emailText.setError(null);
         }
-
+*/
         if (nombre.isEmpty() || nombre.length() < 3) {
             System.out.println("por lo menos 3 caracteres");
             _nombreText.setError("por lo menos 3 carácteres");
@@ -268,8 +267,7 @@ public class RegistrarActivity extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            System.out.println("contrañse entre 4 y 10");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 14) {
             _passwordText.setError("entre 4 y 10 carácteres alfanuméricos");
             return false;
         } else {

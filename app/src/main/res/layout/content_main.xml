@@ -12,39 +12,24 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="com.usach.tbdgrupo7.iservifast.Views.MainActivity">
 
-    <FrameLayout
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="android.support.v4.app.Fragment"
-        android:id="@+id/fragment_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="167dp"
             android:layout_height="wrap_content"
             android:text="Ofrecer"
             android:id="@+id/btn_ofrecer"
-            android:layout_marginTop="150dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
+            android:layout_gravity="left|top"
+            android:layout_alignTop="@+id/btn_solicitar"
             android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Solicitar"
-            android:id="@+id/button2"
-            android:layout_alignTop="@+id/btn_ofrecer"
-            android:layout_toRightOf="@+id/btn_ofrecer"
+            android:id="@+id/btn_solicitar"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginTop="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/btn_ofrecer" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView4"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="46dp" />
-
-    </FrameLayout>
 </RelativeLayout>

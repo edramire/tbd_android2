@@ -5,7 +5,9 @@
     <string name="title_activity_main">iServiFast</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="servidor">http://10.0.2.2:8080/tbd_java_ee-master/</string>
+    <string name="servidor">https://104.236.79.2:8181/Servifast/</string>
+    <!--<string name="servidor">http://10.0.2.2:8080/tbd_java_ee-master/</string>-->
+    <string name="servidor2">http://10.0.2.2:8080/tbd_java_ee-master/</string>
     <string name="terminos_y_condiciones">Al crear cuenta acepto los <u>terminos y condiciones</u>.</string>
     <string name="categoria">Categoria</string>
     <string name="user_created">Usuario creado satisfactoriamente.</string>

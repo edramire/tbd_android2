@@ -29,8 +29,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Nombre de usuario"
-            android:text="usuario5" />
+            android:hint="Nombre de usuario"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Nombre -->
@@ -43,8 +42,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:hint="Nombre"
-            android:text="Nombre5"/>
+            android:hint="Nombre"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Apellido -->
@@ -57,8 +55,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
-            android:hint="Apellidos"
-            android:text="Apellidos5"/>
+            android:hint="Apellidos"/>
     </android.support.design.widget.TextInputLayout>
 
     <!--  Contraseña -->
@@ -71,8 +68,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="Contraseña"
-            android:text="contrasena"/>
+            android:hint="Contraseña"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Repetir Contraseña  -->
@@ -85,8 +81,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="Repetir contraseña"
-            android:text="contrasena"/>
+            android:hint="Repetir contraseña"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Email -->
@@ -99,8 +94,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:text="email5@gmail.com"/>
+            android:hint="Email"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Region -->
@@ -113,8 +107,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Región"
-            android:text="region5"/>
+            android:hint="Región"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Ciudad -->
@@ -127,8 +120,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Ciudad"
-            android:text="ciudad5"/>
+            android:hint="Ciudad"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Comuna -->
@@ -141,8 +133,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Comuna"
-            android:text="comuna5"/>
+            android:hint="Comuna"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Direccion -->
@@ -155,8 +146,7 @@ android:fitsSystemWindows="true">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Dirección"
-            android:text="direccion5"/>
+            android:hint="Dirección"/>
     </android.support.design.widget.TextInputLayout>
 
     <TextView android:id="@+id/terminos_condiciones"

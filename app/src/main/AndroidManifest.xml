@@ -35,11 +35,15 @@
         </activity>
         <activity
             android:name=".Views.OfrecerActivity"
-            android:theme="@style/AppTheme.Dark" >
+            android:theme="@style/AppTheme.Dark"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
         </activity>
         <activity
             android:name=".Views.MainActivity"
+            android:theme="@style/AppTheme.Dark"
             android:label="@string/title_activity_main">
+
         </activity>
         <activity android:name=".Views.DisqusActivity" >
         </activity>

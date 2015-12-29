@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity
     FragmentTransaction transaction;
     private BroadcastReceiver br = null;
     private Button btn_ofrecer;
+    private Button btn_solicitar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +34,42 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        /*
+        Bundle b = getIntent().getExtras();
+        id_usuario = b.getInt("idUsuario");
+*/
         btn_ofrecer = (Button) findViewById(R.id.btn_ofrecer);
+        btn_solicitar = (Button) findViewById(R.id.btn_solicitar);
         btn_ofrecer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
                 SystemUtilities su = new SystemUtilities(getApplicationContext());
                 if (su.isNetworkAvailable()) {
+                    //IntentFilter intentFilter = new IntentFilter("httpData");
+                    //new Ofrecer(getApplicationContext()).execute(getResources().getString(R.string.servidor)+"Categoria");;
                     Intent myIntent = new Intent(MainActivity.this,OfrecerActivity.class);
+                    //myIntent.putExtra("id_usuario",id_usuario);
                     startActivity(myIntent);
+
                 }
                 // Start NewActivity.class
             }
         });
+
+        btn_solicitar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                SystemUtilities su = new SystemUtilities(getApplicationContext());
+                if (su.isNetworkAvailable()) {
+                    //IntentFilter intentFilter = new IntentFilter("httpData");
+                    //new Ofrecer(getApplicationContext()).execute(getResources().getString(R.string.servidor)+"Categoria");;
+                    Intent myIntent = new Intent(MainActivity.this,SolicitarActivity.class);
+                    //myIntent.putExtra("id_usuario",id_usuario);
+                    startActivity(myIntent);
+
+                }
+                // Start NewActivity.class
+            }
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,12 +81,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Solo para probar
-        /*
-        Bundle b = getIntent().getExtras();
-        String usuario = b.getString("nombre");
-        TextView textView = (TextView) findViewById(R.id.textView4);
-        textView.setText(usuario);
-        */
+
+
+
     }
 
     @Override

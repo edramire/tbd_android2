@@ -20,19 +20,14 @@ public class Registrar{
     }
 
     public void getUsuariosMails(String json,String usuario,String mail) {
-        System.out.println("ALGO");
-        System.out.println("algo mas");
         try {
             JSONArray ja = new JSONArray(json);
             usuarios = new String[ja.length()];
             mails = new String[ja.length()];
-            System.out.println("algo mass");
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject row = ja.getJSONObject(i);
                 usuarios[i]=row.getString("usuario");
                 mails[i]=row.getString("mail");
-                System.out.println(usuarios[i]);
-                System.out.println(mails[i]);
             }
             setUsuarioDisponible(usuarioDisponible(usuarios, usuario));
             setMailDisponible(mailDisponible(mails,mail));
@@ -67,6 +62,22 @@ public class Registrar{
 
     public void setUsuarioDisponible(boolean usuarioDisponible) {
         this.usuarioDisponible = usuarioDisponible;
+    }
+
+    public String[] getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(String[] usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public String[] getMails() {
+        return mails;
+    }
+
+    public void setMails(String[] mails) {
+        this.mails = mails;
     }
 
     public boolean isMailDisponible() {

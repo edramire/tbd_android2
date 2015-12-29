@@ -1,15 +1,14 @@
 package com.usach.tbdgrupo7.iservifast.Controllers;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
 
 import com.usach.tbdgrupo7.iservifast.Model.Usuario;
-import com.usach.tbdgrupo7.iservifast.R;
+import com.usach.tbdgrupo7.iservifast.Views.LoginActivity;
 import com.usach.tbdgrupo7.iservifast.Views.MainActivity;
+import com.usach.tbdgrupo7.iservifast.utilities.SSLTrust;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,36 +21,34 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
-import butterknife.InjectView;
-
 public class Login extends AsyncTask<String, Void, String> {
 
+    private SSLTrust sT;
     private Context context;
     private String input_usuario;
     private String input_password;
     private Usuario user;
-    private ProgressDialog progressDialog;
-    @InjectView(R.id.btn_login)Button _loginButton;
+    public LoginActivity loginActivity;
+    private boolean resultadoValidaciones = false;
 
-    public Login(Context context, String usuario, String password) {
+    public Login(LoginActivity loginActivity, Context context, String usuario, String password) {
         this.context = context;
         this.input_usuario = usuario;
         this.input_password = password;
-    }// HttpGet(Context context)
+        this.sT = new SSLTrust();
+        this.loginActivity = loginActivity;
+    }
 
     @Override
     protected void onPreExecute(){
-
-        progressDialog = new ProgressDialog(context, R.style.AppTheme_Dark_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Autentificando...");
-        progressDialog.show();
+        loginActivity.abrirProgressDialog();
     }
 
     @Override
     protected String doInBackground(String... urls) {
         try {
             URL url = new URL(urls[0]);
+            sT.trustEveryone(); //necesario para conexión ssl
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -70,33 +67,40 @@ public class Login extends AsyncTask<String, Void, String> {
     }// doInBackground(String... urls)
 
     @Override
-    protected void onPostExecute(String result) {
-        boolean resultadoValidaciones= validarLogin(result,input_usuario,input_password);
+    public void onPostExecute(String result) {
+        resultadoValidaciones= validarCredenciales(result,input_usuario,input_password);
         if(resultadoValidaciones==true){
-            //progressDialog = new ProgressDialog(LoginActivity.this);
-            //_loginButton.setEnabled(true);
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.putExtra("usuario", user.getUsuario());
-            intent.putExtra("password", user.getPassword());
-            intent.putExtra("nombre", user.getNombre());
-            intent.putExtra("apellido", user.getApellido());
-            intent.putExtra("mail", user.getEmail());
-            intent.putExtra("region", user.getRegion());
-            intent.putExtra("ciudad", user.getCiudad());
-            intent.putExtra("comuna", user.getComuna());
-            intent.putExtra("direccion", user.getDireccion());
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-            //progressDialog.dismiss();
+            loginActivity.cerrarProgressDialog();
+            loginActivity.onLoginSuccess();
+            abrirMain();
         }
         else{//no hay coincidencias para el usuario y contraseña ingresados
-            //
+            loginActivity.cerrarProgressDialog();
+            loginActivity.onLoginFailed();
         }
+        System.out.println("termina onpostexecute");
     }
 
-    public boolean validarLogin(String json, String usuario, String password) {
+    private void abrirMain(){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("idUsuario", user.getIdUsuario());
+        intent.putExtra("usuario", user.getUsuario());
+        intent.putExtra("password", user.getPassword());
+        intent.putExtra("nombre", user.getNombre());
+        intent.putExtra("apellido", user.getApellido());
+        intent.putExtra("mail", user.getEmail());
+        intent.putExtra("region", user.getRegion());
+        intent.putExtra("ciudad", user.getCiudad());
+        intent.putExtra("comuna", user.getComuna());
+        intent.putExtra("direccion", user.getDireccion());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    private boolean validarCredenciales(String json, String usuario, String password) {
         try {
             JSONArray ja = new JSONArray(json);
+            int[] idUsuarios = new int[ja.length()];
             String[] usuarios = new String[ja.length()];
             String[] passwords = new String[ja.length()];
             String[] nombres = new String[ja.length()];
@@ -109,6 +113,7 @@ public class Login extends AsyncTask<String, Void, String> {
             int i;
             for (i = 0; i < ja.length(); i++) {
                 JSONObject row = ja.getJSONObject(i);
+                idUsuarios[i]=row.getInt("idUsuario");
                 usuarios[i]=row.getString("usuario");
                 passwords[i]=row.getString("password");
                 nombres[i]=row.getString("nombre");
@@ -122,6 +127,7 @@ public class Login extends AsyncTask<String, Void, String> {
             int resultado_match = matchUsuarioPassword(usuarios,passwords,usuario,password);//devuelve la posicion del usuario en usuarios[i]
             if(resultado_match!=-1){
                 user = new Usuario();
+                user.setIdUsuario(idUsuarios[resultado_match]);
                 user.setUsuario(usuarios[resultado_match]);
                 user.setNombre(nombres[resultado_match]);
                 user.setApellido(apellidos[resultado_match]);
